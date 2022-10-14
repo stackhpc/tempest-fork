@@ -973,7 +973,7 @@ class ScenarioTest(tempest.test.BaseTestCase):
 
         if ip_addr and not kwargs.get('fixed_ips'):
             kwargs['fixed_ips'] = 'ip_address=%s' % ip_addr
-        ports = self.os_admin.ports_client.list_ports(
+        ports = self.os_primary.ports_client.list_ports(
             device_id=server['id'], **kwargs)['ports']
 
         # A port can have more than one IP address in some cases.
