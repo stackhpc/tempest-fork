@@ -1141,8 +1141,11 @@ class ScenarioTest(tempest.test.BaseTestCase):
                     CONF.validation.network_for_ssh]
             else:
                 network = self.get_tenant_network()
-                addresses = (server['addresses'][network['name']]
+                if network:
+                    addresses = (server['addresses'][network['name']]
                              if network else [])
+                else:
+                    addresses = next(iter(server['addresses'].values()))
             for address in addresses:
                 if (address['version'] == CONF.validation.ip_version_for_ssh and  # noqa
                         address['OS-EXT-IPS:type'] == 'fixed'):
