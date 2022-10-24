@@ -864,7 +864,7 @@ NetworkFeaturesGroup = [
                 default=False,
                 help="Does the test environment support port security?"),
     cfg.BoolOpt('floating_ips',
-                default=True,
+                default=False,
                 help='Does the test environment support floating_ips?'),
     cfg.StrOpt('qos_placement_physnet', default=None,
                help='Name of the physnet for placement based minimum '
@@ -906,7 +906,7 @@ ValidationGroup = [
                 default=True,
                 help='Enable/disable security group rules.'),
     cfg.StrOpt('connect_method',
-               default='floating',
+               default='fixed',
                choices=['fixed', 'floating'],
                help='Default IP type used for validation: '
                     '-fixed: uses the first IP belonging to the fixed network '
